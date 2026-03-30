@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# ecmp hashing только по source address
+sysctl -w net.ipv4.fib_multipath_hash_fields=0x0001
+sysctl -w net.ipv4.fib_multipath_hash_policy=3

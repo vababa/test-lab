@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cat << 'EOF' > /root/links_packet_sender.py
+{{ links_packet_sender }}
+EOF
+
+cat << 'EOF' > /root/random_packet_sender.py
+{{ random_packet_sender }}
+EOF
+
+pip3 install scapy

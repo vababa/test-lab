@@ -1,0 +1,43 @@
+---
+provider: clab
+defaults.device: frr
+module: [ ospf ]
+
+nodes: 
+  r0:
+    config: [ config_r0 ]
+{% for i in links %}  r{{ i }}:
+{% endfor %}  h1:
+    device: linux
+    image: python:3-trixie
+    config: [ config_h1 ]
+    module: [ routing ]
+    routing.static:
+    - ipv4: 10.0.42.0/24
+      nexthop.node: r0
+  h2:
+    device: linux
+    image: python:3-trixie
+    config: [ config_h2 ]
+    module: [ routing ]
+    routing.static:
+    - ipv4: 10.0.42.0/24
+      nexthop.node: r0
+addressing.p2p.ipv4: 10.0.21.0/24
+
+links: 
+  - h1:
+    r0:  
+    type: lan
+    prefix: 10.0.31.0/24
+  - h2:
+    r0:  
+    type: lan
+    prefix: 10.0.41.0/24{% for i in links %}
+  - r0-r{{ i }}{% endfor -%}
+{%- if links %}
+{%- for i in links %}{% if loop.first %} 
+  - r{{ i }}:{% else %}    r{{ i }}:{% endif %}
+{% endfor %}    type: lan
+    prefix: 10.0.42.0/24
+{% endif %}
