@@ -23,7 +23,7 @@ if __name__ == '__main__':
         rps = fh.read()
     
     for i in [1, 2]:
-        h_config = render_j2(f'config_h', {
+        h_config = render_j2('config_h', {
             'ips': links_list, 
             'links_packet_sender': lps,
             'random_packet_sender': rps,

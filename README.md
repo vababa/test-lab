@@ -58,7 +58,7 @@ graph LR
 | H1, H2 | python:3-trixie     |
 
 ### Предварительные настройки
-Хосты H1 и H2 подключены к отдельным портам марщрутизатора R0, адресация на линках - 10.0.31.0/24 и 10.0.41.0/24. Между R0 и остальными марщрутизаторами настраиваются p2p-линки с /30-подсетями, взятыми из сети 10.0.21.0/24. Марщрутизаторы R1..Rn также подключены к общей LAN-сети 10.0.42.0/24.</br>
+Хосты H1 и H2 подключены к отдельным портам марщрутизатора R0, адресация на линках - 10.0.31.0/24 и 10.0.41.0/24. Между R0 и остальными маршрутизаторами настраиваются p2p-линки с /30-подсетями, взятыми из сети 10.0.21.0/24. Маршрутизаторы R1..Rn также подключены к общей LAN-сети 10.0.42.0/24.</br>
 Между маршрутизаторами поднимается OSPF-соседство для обмена маршрутами.</br>
 На R0 применяются настройки для расчета ECMP-hash только по source IP address:
 ```
@@ -112,7 +112,7 @@ sysctl -w net.ipv4.fib_multipath_hash_policy=3
 Установка netlab, containerlab:
 ```
 sudo apt-get update && sudo apt-get install -y python3-pip
-sudo python3 -m pip install networklab --break-system-packages
+sudo python3 -m pip install networklab pytest scapy allure-pytest numpy matplotlib seaborn --break-system-packages
 sudo netlab install ubuntu ansible containerlab
 ```
 Установка allure:

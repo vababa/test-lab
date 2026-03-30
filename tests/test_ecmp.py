@@ -4,8 +4,8 @@ import allure
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import io, os
-import sys
+import io
+import os
 from pcap_analyze import TestSuite
 
 

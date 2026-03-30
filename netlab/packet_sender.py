@@ -81,7 +81,7 @@ def main():
     # Statistics
     packet_count = 0
     if args.verbose:
-        print(f"=== ECMP Test Configuration ===")
+        print("=== ECMP Test Configuration ===")
         print(f"Source IP: {src_ip}")
         print(f"Destination networks: {args.dnet}")
         print(f"Source ports: {list(sport_range)}")
@@ -89,7 +89,7 @@ def main():
         print(f"Protocol(s): {args.protocol}")
         print(f"Packets per combination: {args.count}")
         print(f"Delay: {args.delay}s")
-        print(f"===============================\n")
+        print("===============================\n")
     
     # Send packets
     for dst_ip in dst_networks:
@@ -122,10 +122,10 @@ def main():
                 if args.delay > 0 and (sport != sport_range[-1] or dport != dport_range[-1]):
                     time.sleep(args.delay)
     
-    print(f"\n=== Summary ===")
+    print("\n=== Summary ===")
     print(f"Total packets sent: {packet_count}")
     print(f"Unique flows: {len(list(dst_networks)) * len(sport_range) * len(dport_range) * (2 if args.protocol == 'both' else 1)}")
-    print(f"===============")
+    print("===============")
 
 if __name__ == "__main__":
     import time

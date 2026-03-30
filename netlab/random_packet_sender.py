@@ -1,5 +1,5 @@
 import argparse
-from scapy.all import *
+from scapy.all import IP, RandIP, TCP, send
 import random
 import time
 
@@ -27,9 +27,9 @@ def main():
         send(packet, verbose=False)
         packet_count += 1
 
-    print(f"\n=== Summary ===")
+    print("\n=== Summary ===")
     print(f"Total packets sent: {packet_count}")
-    print(f"===============")
+    print("===============")
 
 if __name__ == "__main__":
 
