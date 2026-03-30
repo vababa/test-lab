@@ -5,6 +5,7 @@ import argparse
 
 
 class TestSuite:
+    """Класс обработчика pcap файлов."""
     lo_network = '10.1.1.'
     p2p_network = '10.0.24.'
     lan_network = '10.0.42.'
@@ -24,6 +25,7 @@ class TestSuite:
         return result
         
     def process_lps_pcaps(self) -> None:
+        """Обработка pcap файлов теста А."""
         tests = self.links
         for i in range(tests):
             for j in range(self.links):
@@ -42,7 +44,8 @@ class TestSuite:
                         # print('IP yes')
                         self.lps_test_results[i][j] = 1
     
-    def process_rps_pcaps(self):
+    def process_rps_pcaps(self) -> None:
+        """Обработка pcap файлов теста Б."""
         for i in range(self.links):
             pcap_path = f'{self.pcap_folder}/rps_link{i+1}.pcap'
             try:
@@ -56,8 +59,6 @@ class TestSuite:
 
     def check_test_a_criteria(self):
         [sum(test) for test in self.lps_test_results]
-            
-
             
 
 if __name__ == '__main__':
